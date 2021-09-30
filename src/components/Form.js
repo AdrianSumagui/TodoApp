@@ -2,33 +2,33 @@ import React, {useState} from "react";
 
 function Form(props) {
 
-const [input, setInput] = useState('');
+    const [input, setInput] = useState('');
 
-const handleChange = e => {
+    const handleChange = e => {
 
     setInput(e.target.value);
 
-};
+    };
 
-const handleSubmit = e => {
+    const handleSubmit = e => {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    /*props.onSubmit({
+        props.onSubmit({
 
-        id: Math.floor(Math.random() * 10000),
-        text: input
+            id: Math.floor(Math.random() * 10000),
+            text: input
 
-    });*/
+        });
 
-    setInput('');
+        setInput('');
 
-};
+    };
 
     return (
 
-        <>
-        
+        <div>
+
         <form className="todo-form" onSubmit={handleSubmit}>
             <input type="text" placeholder="Añade una tarea ^^"
             value={input} name="text" className="todo-input"
@@ -36,11 +36,11 @@ const handleSubmit = e => {
         </form>
         
         <button className="todo-button">Añadir tarea</button>
-        
-        </>
 
+        </div>
+        
     );
 
-}
+};
 
 export default Form;
