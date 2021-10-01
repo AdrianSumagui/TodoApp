@@ -6,11 +6,10 @@ function List() {
 
     const [todos, setTodos] = useState([])
 
-    // Añadir una tarea a la lista.
+    // Añadir una tarea en la lista.
 
     const addTodo = todo => {
  
-
         if (!todo.text || /^\s*$/.test(todo.text)) {
 
             return
@@ -20,9 +19,36 @@ function List() {
         const newTodos = [todo, ...todos]
 
         setTodos(newTodos);
-        console.log(todo, ...todos);
+        //console.log(todo, ...todos);
 
     };
+
+    // Editar una tarea en la lista.
+
+    const updateTodo = (todoId, newValue) => {
+
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+
+            return
+
+        }
+
+        setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+
+    };
+
+    // Eliminar una tarea en la lista.
+
+    const removeTodo = id => {
+
+        const removeArr = [...todos].filter(todo => todo.id !== id);
+
+        setTodos(removeArr);
+
+    };
+
+
+    // Marcar como como 'COMPLETADA' una tarea de la lista.
 
     const completeTodo = id => {
 
@@ -40,7 +66,7 @@ function List() {
 
         setTodos(updatedTodos);
 
-    }
+    };
 
     return (
 
@@ -48,7 +74,9 @@ function List() {
 
             <h1>¿Qué tienes pensado hacer el día de hoy?</h1>
             <Form onSubmit = {addTodo}/>
-            <Todo todos = {todos} completeTodo = {completeTodo}/>
+            <Todo todos = {todos} completeTodo = {completeTodo}
+            removeTodo = {removeTodo} updateTodo = {updateTodo}
+            />
             
         </div>
 
