@@ -72,7 +72,7 @@ function List() {
 
         <div>
 
-            <h1>¿Qué tienes pensado hacer el día de hoy?</h1>
+            <h1>Lista de Tareas - AdriDEV</h1>
             <Form onSubmit = {addTodo}/>
             <Todo todos = {todos} completeTodo = {completeTodo}
             removeTodo = {removeTodo} updateTodo = {updateTodo}
