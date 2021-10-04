@@ -1,8 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 
 function Form(props) {
 
     const [input, setInput] = useState('');
+
+    const inputRef = useRef(null);
+
+    useEffect (() => {
+
+        inputRef.current.focus();
+
+    });
 
     const handleChange = e => {
 
@@ -32,7 +40,8 @@ function Form(props) {
         <form className="todo-form" onSubmit={handleSubmit}>
             <input type="text" placeholder="Añade una tarea ^^"
             value={input} name="text" className="todo-input"
-            onChange={handleChange}/>
+            onChange={handleChange}
+            ref={inputRef}/>
         </form>
         
         <button className="todo-button">Añadir tarea</button>
